@@ -1,13 +1,4 @@
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
-
 #include "RentIt.h"
-
-namespace Sequence
-{
 
 void RentIt::getLocations()
 {
@@ -36,4 +27,3 @@ void RentIt::processModuleData(unsigned long customerId, unsigned short vehicleI
 void RentIt::createReservation(unsigned long customerId, unsigned short vehicleId, DateTime startTime, DateTime endTime, std::string paymentFrequency)
 {
 }
-}  // namespace Sequence

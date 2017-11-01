@@ -1,25 +1,17 @@
-#ifndef DESIGN CLASS_VEHICLE_H
-#define DESIGN CLASS_VEHICLE_H
-
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
+#ifndef VEHICLEMANAGER_VEHICLE_H
+#define VEHICLEMANAGER_VEHICLE_H
 
 #include "Location.h"
-#include "Sequence/VehicleManager.h"
 
-namespace Design Class
+namespace VehicleManager
 {
 class Vehicle
 {
 private:
 	int vehicleId;
 
-	Sequence::VehicleManager vehicleManager;
 	Location location;
 };
 
-}  // namespace Design Class
+}  // namespace VehicleManager
 #endif

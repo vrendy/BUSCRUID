@@ -10,7 +10,7 @@ namespace ReservationManager
 class CalculateCheckoutLate : public ReservationManager::CalculationMethod
 {
 public:
-	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, CarManager::Car car);
+	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, VehicleManager::Car car);
 
 };
 

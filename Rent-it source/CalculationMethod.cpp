@@ -3,7 +3,7 @@
 namespace ReservationManager
 {
 
-unsigned long CalculationMethod::calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, CarManager::Car car)
+unsigned long CalculationMethod::calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, VehicleManager::Car car)
 {
 	return 0;
 }

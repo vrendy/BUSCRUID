@@ -1,6 +1,6 @@
 #include "Car.h"
 
-namespace CarManager
+namespace VehicleManager
 {
 
 

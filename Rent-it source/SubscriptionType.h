@@ -1,15 +1,9 @@
-#ifndef DESIGN CLASS_SUBSCRIPTION_TYPE_H
-#define DESIGN CLASS_SUBSCRIPTION_TYPE_H
-
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
+#ifndef CUSTOMERMANAGER_SUBSCRIPTION_TYPE_H
+#define CUSTOMERMANAGER_SUBSCRIPTION_TYPE_H
 
 #include "Subscription.h"
 
-namespace Design Class
+namespace CustomerManager
 {
 class SubscriptionType
 {
@@ -21,5 +15,5 @@ private:
 	Subscription subscription;
 };
 
-}  // namespace Design Class
+}  // namespace CustomerManager
 #endif

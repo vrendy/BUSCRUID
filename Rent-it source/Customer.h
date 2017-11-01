@@ -3,7 +3,8 @@
 
 #include "Subscription.h"
 #include <string.h>
-#include "CustomerManager.h"
+
+#include "CustomerDAO.h"
 
 namespace CustomerManager
 {
@@ -16,7 +17,6 @@ private:
 	std::string email;
 	std::string bankNbr;
 
-	CustomerManager customerManager;
 	Subscription subscription;
 
 public:

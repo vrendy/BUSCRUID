@@ -1,15 +1,9 @@
-#ifndef DESIGN CLASS_PAYMENT_FREQUENCY_H
-#define DESIGN CLASS_PAYMENT_FREQUENCY_H
-
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
+#ifndef CUSTOMERMANAGER_PAYMENT_FREQUENCY_H
+#define CUSTOMERMANAGER_PAYMENT_FREQUENCY_H
 
 #include "Subscription.h"
 
-namespace Design Class
+namespace CustomerManager
 {
 class PaymentFrequency
 {
@@ -25,5 +19,5 @@ private:
 	Subscription subscription;
 };
 
-}  // namespace Design Class
+}  // namespace CustomerManager
 #endif

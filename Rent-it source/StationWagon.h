@@ -1,19 +1,13 @@
-#ifndef DESIGN CLASS_STATION_WAGON_H
-#define DESIGN CLASS_STATION_WAGON_H
+#ifndef VEHICLEMANAGER_STATION_WAGON_H
+#define VEHICLEMANAGER_STATION_WAGON_H
 
-#include <string>
-#include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
+#include "Vehicle.h"
 
-#include "Design Class/Vehicle.h"
-
-namespace Design Class
+namespace VehicleManager
 {
 class StationWagon : public Vehicle
 {
 };
 
-}  // namespace Design Class
+}  // VehicleManager
 #endif

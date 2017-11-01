@@ -1,25 +1,20 @@
-#ifndef DESIGN CLASS_DATABASE_H
-#define DESIGN CLASS_DATABASE_H
+#ifndef DATABASE_H
+#define DATABASE_H
 
 #include <string>
 #include <vector>
-#include <list>
-#include <iostream>
-#include <assert.h>
 
-#include "Sequence/CustomerManager.h"
-#include "Sequence/ReservationManager.h"
-#include "Sequence/VehicleManager.h"
+#include "CustomerDAO.h"
+#include "ReservationDAO.h"
+#include "VehicleDAO.h"
 
-namespace Design Class
-{
+
 class Database
 {
 private:
-	Sequence::CustomerManager customerManager;
-	Sequence::ReservationManager reservationManager;
-	Sequence::VehicleManager vehicleManager;
+	std::vector<CustomerManager::Customer> customerTable;
+	std::vector<ReservationManager::Reservation> reservationTable;
+	std::vector<VehicleManager::Vehicle> vehicleTable;
 };
 
-}  // namespace Design Class
 #endif

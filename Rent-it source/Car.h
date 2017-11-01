@@ -3,7 +3,7 @@
 
 #include "Vehicle.h"
 
-namespace CarManager
+namespace VehicleManager
 {
 class Car : public Vehicle
 {
