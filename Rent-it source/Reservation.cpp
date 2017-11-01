@@ -3,7 +3,7 @@
 namespace ReservationManager
 {
 
-void Reservation::Reservation(unsigned long customerId, unsigned short vehicleId, DateTime startTime, DateTime endTime)
+Reservation::Reservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime)
 {
 }
 
@@ -28,11 +28,11 @@ void Reservation::setTotalCosts(unsigned long total)
 {
 }
 
-void Reservation::setStartTime(DateTime startTime)
+void Reservation::setStartTime(unsigned short startTime)
 {
 }
 
-void Reservation::setEndTime(DateTime endTime)
+void Reservation::setEndTime(unsigned short endTime)
 {
 }
 }  // namespace ReservationManager

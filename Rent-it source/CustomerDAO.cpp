@@ -3,35 +3,37 @@
 namespace CustomerManager
 {
 
-void CustomerManager::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr)
+void CustomerDAO::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr)
 {
 }
 
-Customer CustomerManager::getCustomer(unsigned long customerId)
+Customer CustomerDAO::getCustomer(unsigned long customerId)
+{
+}
+
+CustomerManager::SubscriptionType CustomerDAO::getSubscriptionType(unsigned long customerId)
+{
+}
+
+CustomerManager::PaymentFrequency CustomerDAO::getSubscriptionPaymentFrequency(unsigned long customerId)
+{
+}
+
+bool CustomerDAO::customerHasLatePayments(unsigned long customerId)
 {
 	return 0;
 }
 
-CustomerManager::SubscriptionType CustomerManager::getSubscriptionType(unsigned long customerId)
-{
-	return 0;
-}
-
-CustomerManager::PaymentFrequency CustomerManager::getSubscriptionPaymentFrequency(unsigned long customerId)
-{
-	return 0;
-}
-
-boolean CustomerManager::customerHasLatePayments(unsigned long customerId)
-{
-	return 0;
-}
-
-void CustomerManager::deleteCustomer(unsigned long customerId)
+void CustomerDAO::deleteCustomer(unsigned long customerId)
 {
 }
 
-void CustomerManager::addCustomer(std::string name, std::string adress, std::string residence, std::string mail, std::string bankNbr)
+void CustomerDAO::addCustomer(std::string name, std::string adress, std::string residence, std::string mail, std::string bankNbr)
 {
+}
+
+void CustomerDAO::addToDatabase(Customer customer)
+{
+
 }
 }  // namespace Sequence

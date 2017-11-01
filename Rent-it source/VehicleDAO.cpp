@@ -5,12 +5,10 @@ namespace VehicleManager
 
 std::vector<Location> VehicleDAO::getAllLocations()
 {
-	return 0;
 }
 
-std::vector<Car> VehicleDAO::getVehicles(Location location, dateTime startTime, dateTime endTime)
+std::vector<Car> VehicleDAO::getVehicles(Location location, unsigned short startTime, unsigned short endTime)
 {
-	return 0;
 }
 
 bool VehicleDAO::isAvailable(int vechicleId)

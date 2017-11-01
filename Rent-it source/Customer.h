@@ -2,14 +2,15 @@
 #define CUSTOMERMANAGER_CUSTOMER_H
 
 #include "Subscription.h"
-#include <string.h>
-
-#include "CustomerDAO.h"
+#include <string>
 
 namespace CustomerManager
 {
 class Customer
 {
+public:
+	Customer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr);
+
 private:
 	std::string name;
 	std::string adress;
@@ -18,10 +19,6 @@ private:
 	std::string bankNbr;
 
 	Subscription subscription;
-
-public:
-	void Customer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr);
-
 };
 
 }  // namespace CustomerManager

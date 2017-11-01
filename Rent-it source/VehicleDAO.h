@@ -5,7 +5,6 @@
 
 #include "Car.h"
 #include "Location.h"
-#include "dateTime.h"
 #include "Vehicle.h"
 #include "Database.h"
 
@@ -16,7 +15,7 @@ class VehicleDAO
 public:
 	std::vector<Location> getAllLocations();
 
-	std::vector<Car> getVehicles(Location location, dateTime startTime, dateTime endTime);
+	std::vector<Car> getVehicles(Location location, unsigned short startTime, unsigned short endTime);
 
 	bool isAvailable(int vechicleId);
 

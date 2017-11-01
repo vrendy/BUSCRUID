@@ -8,10 +8,15 @@
 #include "ReservationDAO.h"
 #include "VehicleDAO.h"
 
-
 class Database
 {
+	Database(Database& database) = delete;
+public:
+	Database();
+	static Database& getDatabase();
 private:
+	~Database();
+
 	std::vector<CustomerManager::Customer> customerTable;
 	std::vector<ReservationManager::Reservation> reservationTable;
 	std::vector<VehicleManager::Vehicle> vehicleTable;

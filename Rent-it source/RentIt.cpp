@@ -4,26 +4,26 @@ void RentIt::getLocations()
 {
 }
 
-void RentIt::addCustomer(std::string NAW, std::string email, std::string bankNbr)
+void RentIt::addCustomer(std::string name, std::string address, std::string city, std::string email, std::string bankNbr)
 {
 }
 
-void RentIt::getAvailableVehicles(Location location, dateTime startTime, dateTime endTime)
+void RentIt::getAvailableVehicles(VehicleManager::Location location, unsigned short startTime, unsigned short endTime)
 {
 }
 
-void RentIt::chooseCar(Car car)
+void RentIt::chooseCar(VehicleManager::Car car)
 {
 }
 
-void RentIt::chooseSubscriptionType(Subscription subscriptionType)
+void RentIt::chooseSubscriptionType(CustomerManager::Subscription subscriptionType)
 {
 }
 
-void RentIt::processModuleData(unsigned long customerId, unsigned short vehicleId, DateTime checkinTime, DateTime endTime, unsigned short km)
+void RentIt::processModuleData(unsigned long customerId, unsigned short vehicleId, unsigned short checkinTime, unsigned short endTime, unsigned short km)
 {
 }
 
-void RentIt::createReservation(unsigned long customerId, unsigned short vehicleId, DateTime startTime, DateTime endTime, std::string paymentFrequency)
+void RentIt::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, std::string paymentFrequency)
 {
 }

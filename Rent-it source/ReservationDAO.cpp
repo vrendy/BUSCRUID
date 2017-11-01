@@ -2,21 +2,19 @@
 
 namespace ReservationManager
 {
-
-void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, DateTime startTime, DateTime endTime)
+void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime)
 {
 }
 
-void ReservationDAO::addToDatabase(Reservation aReservation)
+void ReservationDAO::addToDatabase(Reservation& reservation)
 {
 }
 
-void ReservationDAO::processModuleData(unsigned long customerId, unsigned short vehicleId, DateTime checkInTime, DateTime endTime, unsigned short km)
+void ReservationDAO::processModuleData(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime, unsigned short km)
 {
 }
 
-Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, DateTime checkInTime, DateTime endTime)
+Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime)
 {
-	return 0;
 }
 }  // namespace ReservationManager

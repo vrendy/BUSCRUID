@@ -9,10 +9,8 @@ namespace ReservationManager
 {
 class CalculationMethod
 {
-private:
-	Reservation reservation;
-
 public:
+	CalculationMethod();
 	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, VehicleManager::Car car);
 
 };
