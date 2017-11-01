@@ -29,7 +29,6 @@ public:
 	void addCustomer(std::string name, std::string adress, std::string residence, std::string mail, std::string bankNbr);
 
 	void addToDatabase(Customer customer);
-
 };
 
 }  // namespace CustomerManager

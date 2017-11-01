@@ -9,11 +9,12 @@ namespace CustomerManager
 class Customer
 {
 public:
-	Customer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr);
+	Customer(std::string aName, std::string anAdress, std::string aResidence, std::string anEmail, std::string aBankNbr);
 
 private:
+	unsigned long customerId;
 	std::string name;
-	std::string adress;
+	std::string address;
 	std::string residence;
 	std::string email;
 	std::string bankNbr;

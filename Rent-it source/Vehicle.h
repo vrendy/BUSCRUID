@@ -7,8 +7,10 @@ namespace VehicleManager
 {
 class Vehicle
 {
+public:
+	Vehicle();
 private:
-	int vehicleId;
+	unsigned short vehicleId;
 
 	Location location;
 };
