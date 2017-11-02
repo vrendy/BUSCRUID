@@ -14,17 +14,23 @@ void ReservationDAO::processModuleData(unsigned long customerId, unsigned short 
 {
 	for(Reservation r : Database::getDatabase().getReservationTable())
 	{
-		if(r.getCustomerId() == customerId && r.getVehicleId() == vehicleId && checkInTime >= r.getStartTime() && checkInTime <= r.getEndTime()) // Customer checked in with car
+		// Get customer from db where customer checkInTime is within reservation begin and end time, for that customer, calculate totalcosts
+		if(r.getCustomerId() == customerId && r.getVehicleId() == vehicleId) // Customer checked in with car
 		{
-			r.setCheckInTime(checkInTime);
-			r.setCheckOutTime(endTime);
-			r.setKm(km);
-			r.calculateTotalCosts();
+			if(checkInTime >= r.getStartTime() && checkInTime <= r.getEndTime())
+			{
+				r.setCheckInTime(checkInTime);
+				r.setCheckOutTime(endTime);
+				r.setKm(km);
+				r.calculateTotalCosts();
+			}
+			else if(/*niet ingechecked en uitgechecked reservering verlopen*/) // TODO check with current time from Rent-it if this is the reservation that has not been checked in or out and has finished
+			{
+
+				r.calculateTotalCosts();
+			}
 		}
 	}
-	//get reservation from db (loop through) (if chekcInTime !=0 check for reservation with checkintime between start and end, where customerId and vehicleId is same)
-	// set alles
-	//calculatetotalcost
 }
 
 Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime)

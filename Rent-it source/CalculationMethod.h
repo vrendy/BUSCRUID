@@ -11,7 +11,7 @@ class CalculationMethod
 {
 public:
 	CalculationMethod();
-	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, VehicleManager::Car car);
+	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, CustomerManager::PaymentFrequency paymentFrequency, unsigned short km, unsigned short vehicleId);
 
 };
 
