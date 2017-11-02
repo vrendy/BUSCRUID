@@ -11,6 +11,9 @@ class Customer
 public:
 	Customer(std::string aName, std::string anAdress, std::string aResidence, std::string anEmail, std::string aBankNbr);
 
+	unsigned long getCustomerId();
+	Subscription& getSubscription();
+
 private:
 	unsigned long customerId;
 	std::string name;

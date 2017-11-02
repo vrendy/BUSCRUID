@@ -12,5 +12,14 @@
 
 namespace CustomerManager
 {
+	Subscription::Subscription()
+	{
 
+	}
+
+	Subscription::Subscription(unsigned short aFee, SubscriptionType aType, PaymentFrequency aFrequency)
+		: fee(aFee), type(aType), paymentFrequency(aFrequency) {
+	}
 }
+
+

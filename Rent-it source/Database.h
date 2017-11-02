@@ -14,6 +14,8 @@ class Database
 public:
 	Database();
 	static Database& getDatabase();
+	std::vector<CustomerManager::Customer>& getCustomerTable();
+
 private:
 	~Database();
 

@@ -15,3 +15,7 @@ Database::~Database()
 	static Database database;
 	return database;
 }
+
+std::vector<CustomerManager::Customer>& Database::getCustomerTable() {
+	return customerTable;
+}
