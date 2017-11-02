@@ -15,6 +15,7 @@ public:
 	Database();
 	static Database& getDatabase();
 	std::vector<CustomerManager::Customer>& getCustomerTable();
+	std::vector<ReservationManager::Reservation>& getReservationTable();
 
 private:
 	~Database();

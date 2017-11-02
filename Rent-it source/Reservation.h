@@ -15,8 +15,8 @@ public:
 	bool checkoutOnTime();
 	void setKm(unsigned short km);
 	void setTotalCosts(unsigned long total);
-	void setStartTime(unsigned short aStartTime);
-	void setEndTime(unsigned short anEndTime);
+	void setCheckInTime(unsigned short aCheckInTime);
+	void setCheckOutTime(unsigned short aCheckOutTime);
 
 private:
 	unsigned long				reservationId;
@@ -24,6 +24,8 @@ private:
 	unsigned short				vehicleId;
 	unsigned short 				startTime;
 	unsigned short 				endTime;
+	unsigned short				checkInTime;
+	unsigned short				checkOutTime;
 	unsigned short 				distance;		// Distance in Kilo meter
 	unsigned long 				totalCosts;
 

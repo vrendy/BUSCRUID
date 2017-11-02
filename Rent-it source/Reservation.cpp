@@ -5,7 +5,8 @@ namespace ReservationManager
 
 static unsigned long reservationCounter = 0;
 
-Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime) : reservationId(++reservationCounter), customerId(aCustomerId), vehicleId(aVehicleId), startTime(aStartTime), endTime(anEndTime), distance(0), totalCosts(0)
+Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime)
+	: reservationId(++reservationCounter), customerId(aCustomerId), vehicleId(aVehicleId), startTime(aStartTime), endTime(anEndTime), checkInTime(0), checkOutTime(0), distance(0), totalCosts(0)
 {
 
 }
@@ -16,7 +17,7 @@ void Reservation::calculateTotalCosts()
 
 bool Reservation::checkoutOnTime()
 {
-	return 0;
+	return checkOutTime <= endTime;
 }
 
 void Reservation::setKm(unsigned short aDistance)
@@ -29,13 +30,13 @@ void Reservation::setTotalCosts(unsigned long total)
 	totalCosts = total;
 }
 
-void Reservation::setStartTime(unsigned short aStartTime)
+void Reservation::setCheckInTime(unsigned short aCheckInTime)
 {
-	startTime = aStartTime;
+	startTime = aCheckInTime;
 }
 
-void Reservation::setEndTime(unsigned short anEndTime)
+void Reservation::setCheckOutTime(unsigned short aCheckOutTime)
 {
-	endTime = anEndTime;
+	endTime = aCheckOutTime;
 }
 }  // namespace ReservationManager

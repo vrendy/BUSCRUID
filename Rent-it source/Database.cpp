@@ -19,3 +19,8 @@ Database::~Database()
 std::vector<CustomerManager::Customer>& Database::getCustomerTable() {
 	return customerTable;
 }
+
+std::vector<ReservationManager::Reservation>& Database::getReservationTable()
+{
+	return reservationTable;
+}
