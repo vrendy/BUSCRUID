@@ -10,7 +10,7 @@ namespace ReservationManager
 class Reservation
 {
 public:
-	Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime);
+	Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime, unsigned short aPaymentFrequency);
 	void calculateTotalCosts();
 	bool checkoutOnTime();
 	void setKm(unsigned short km);
@@ -18,12 +18,29 @@ public:
 	void setCheckInTime(unsigned short aCheckInTime);
 	void setCheckOutTime(unsigned short aCheckOutTime);
 
+	unsigned long getCustomerId() const {
+		return customerId;
+	}
+
+	unsigned short getEndTime() const {
+		return endTime;
+	}
+
+	unsigned short getStartTime() const {
+		return startTime;
+	}
+
+	unsigned short getVehicleId() const {
+		return vehicleId;
+	}
+
 private:
 	unsigned long				reservationId;
 	unsigned long				customerId;
 	unsigned short				vehicleId;
 	unsigned short 				startTime;
 	unsigned short 				endTime;
+	unsigned short				paymentFrequency;
 	unsigned short				checkInTime;
 	unsigned short				checkOutTime;
 	unsigned short 				distance;		// Distance in Kilo meter

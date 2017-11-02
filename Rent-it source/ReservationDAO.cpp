@@ -4,9 +4,9 @@
 
 namespace ReservationManager
 {
-void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime)
+void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, unsigned short paymentFrequency)
 {
-	Reservation reservation(customerId, vehicleId, startTime, endTime);
+	Reservation reservation(customerId, vehicleId, startTime, endTime, paymentFrequency);
 	Database::getDatabase().getReservationTable().push_back(reservation);
 }
 
@@ -14,7 +14,7 @@ void ReservationDAO::processModuleData(unsigned long customerId, unsigned short 
 {
 	for(Reservation r : Database::getDatabase().getReservationTable())
 	{
-		if(r.customerId == customerId && r.vehicleId == vehicleId && checkInTime >= r.startTime && checkInTime <= r.endTime) // Customer checked in with car
+		if(r.getCustomerId() == customerId && r.getVehicleId() == vehicleId && checkInTime >= r.getStartTime() && checkInTime <= r.getEndTime()) // Customer checked in with car
 		{
 			r.setCheckInTime(checkInTime);
 			r.setCheckOutTime(endTime);
