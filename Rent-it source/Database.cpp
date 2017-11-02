@@ -24,3 +24,7 @@ std::vector<ReservationManager::Reservation>& Database::getReservationTable()
 {
 	return reservationTable;
 }
+
+std::vector<VehicleManager::Vehicle>& Database::getVehicleTable() {
+	return vehicleTable;
+}

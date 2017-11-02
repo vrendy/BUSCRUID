@@ -9,6 +9,8 @@ class Vehicle
 {
 public:
 	Vehicle();
+
+	Location getLocation();
 private:
 	unsigned short vehicleId;
 

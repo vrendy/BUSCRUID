@@ -8,19 +8,24 @@
 #ifndef CUSTOMERMANAGER_SUBSCRIPTION_H_
 #define CUSTOMERMANAGER_SUBSCRIPTION_H_
 
-#include "SubscriptionType.h"
 #include "PaymentFrequency.h"
 
 namespace CustomerManager
 {
+
+enum SubscriptionType {
+	free, paid
+};
+
 class Subscription
 {
 public:
 	Subscription();
 	Subscription(unsigned short aFee, SubscriptionType type, PaymentFrequency aFrequency);
 
-	unsigned short getFee();
-
+	SubscriptionType getSubscriptionType() {
+		return type;
+	}
 
 private:
 	unsigned short fee;

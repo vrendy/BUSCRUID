@@ -6,11 +6,11 @@
 
 #include "Customer.h"
 #include "Database.h"
-#include "SubscriptionType.h"
 #include "PaymentFrequency.h"
 
 namespace CustomerManager
 {
+
 class CustomerDAO
 {
 public:
@@ -19,8 +19,6 @@ public:
 	Customer getCustomer(unsigned long customerId);
 
 	SubscriptionType getSubscriptionType(unsigned long customerId);
-
-	PaymentFrequency getSubscriptionPaymentFrequency(unsigned long customerId);
 
 	bool customerHasLatePayments(unsigned long customerId);
 

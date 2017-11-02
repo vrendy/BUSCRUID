@@ -15,7 +15,7 @@ class VehicleDAO
 public:
 	std::vector<Location> getAllLocations();
 
-	std::vector<Car> getVehicles(Location location, unsigned short startTime, unsigned short endTime);
+	std::vector<Vehicle> getVehicles(Location location, unsigned short startTime, unsigned short endTime);
 
 	bool isAvailable(int vechicleId);
 

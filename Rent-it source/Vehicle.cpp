@@ -10,4 +10,8 @@ Vehicle::Vehicle() : vehicleId(++vehicleCounter)
 
 }
 
+Location Vehicle::getLocation() {
+	return location;
+}
+
 }  // namespace Design Class

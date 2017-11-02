@@ -12,7 +12,7 @@
 
 namespace CustomerManager
 {
-	Subscription::Subscription()
+	Subscription::Subscription() : type(SubscriptionType::free), fee(0)
 	{
 
 	}
