@@ -8,19 +8,23 @@ namespace VehicleManager
 
 enum VehicleType
 {
-	car, station
+	uninitialized = 99, car, station
 };
 
 class Vehicle
 {
 public:
-	Vehicle();
+//	Vehicle();
+	Vehicle(VehicleType aType);
+//	Vehicle& operator=(const Vehicle& aVehicle);
 
+	unsigned short getId();
+	VehicleType getType();
 	Location getLocation();
 private:
-	unsigned short vehicleId;
-
-	Location location;
+	unsigned short 		id;
+	VehicleType 		type;
+	Location 			location;
 };
 
 }  // namespace VehicleManager

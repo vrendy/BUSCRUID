@@ -9,8 +9,10 @@
 #include "VehicleDAO.h"
 
 
-// tijdseenheid, type auto, geld in eurocent
-typedef std::pair<unsigned short, std::pair<unsigned short, std::pair<unsigned short, unsigned short>>> paymentFreeRow;
+// abonnementstype, tijdseenheid, type auto, geld in eurocent
+typedef std::pair<unsigned short, std::pair<unsigned short, std::pair<unsigned short, unsigned short>>> paymentRow;
+// abonnementstype, type auto, geld in eurocent
+typedef std::pair<unsigned short, std::pair<unsigned short, unsigned short>> pricePerKmRow;
 
 class Database
 {
@@ -21,7 +23,8 @@ public:
 	std::vector<CustomerManager::Customer>& getCustomerTable();
 	std::vector<ReservationManager::Reservation>& getReservationTable();
 	std::vector<VehicleManager::Vehicle>& getVehicleTable();
-	std::vector<paymentFreeRow>& getPaymentFreeTable();
+	std::vector<paymentRow>& getPaymentTable();
+	std::vector<pricePerKmRow>& getPricePerKmTable();
 
 private:
 	~Database();
@@ -29,7 +32,8 @@ private:
 	std::vector<CustomerManager::Customer> customerTable;
 	std::vector<ReservationManager::Reservation> reservationTable;
 	std::vector<VehicleManager::Vehicle> vehicleTable;
-	std::vector<std::pair<unsigned short, std::pair<unsigned short, unsigned short>>> paymentTable;
+	std::vector<paymentRow> paymentTable;
+	std::vector<pricePerKmRow> pricePerKmTable;
 
 
 };

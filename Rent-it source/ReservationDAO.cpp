@@ -4,9 +4,9 @@
 
 namespace ReservationManager
 {
-void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, unsigned short paymentFrequency)
+void ReservationDAO::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, PaymentFrequency aPaymentFrequency)
 {
-	Reservation reservation(customerId, vehicleId, startTime, endTime, paymentFrequency);
+	Reservation reservation(customerId, vehicleId, startTime, endTime, aPaymentFrequency);
 	Database::getDatabase().getReservationTable().push_back(reservation);
 }
 

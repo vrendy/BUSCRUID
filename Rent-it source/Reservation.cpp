@@ -5,7 +5,7 @@ namespace ReservationManager
 
 static unsigned long reservationCounter = 0;
 
-Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime, unsigned short aPaymentFrequency)
+Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime, PaymentFrequency aPaymentFrequency)
 	: reservationId(++reservationCounter), customerId(aCustomerId), vehicleId(aVehicleId), startTime(aStartTime), endTime(anEndTime), paymentFrequency(aPaymentFrequency), checkInTime(0), checkOutTime(0), distance(0), totalCosts(0)
 {
 
@@ -13,6 +13,7 @@ Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, u
 
 void Reservation::calculateTotalCosts()
 {
+	// When calling CalculateCheckoutOnTime, pass time which is sum of the time that has to be paid
 //	calculationMethod(type)
 }
 

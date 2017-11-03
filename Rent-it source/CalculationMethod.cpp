@@ -8,7 +8,7 @@ CalculationMethod::CalculationMethod()
 
 }
 
-unsigned long CalculationMethod::calculateTotalCosts(unsigned long subscriptionPrice, unsigned short paymentFrequency, unsigned short km, unsigned short vehicleId)
+unsigned long CalculationMethod::calculateTotalCosts(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
 {
 	return 0;
 }

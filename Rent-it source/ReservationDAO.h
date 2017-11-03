@@ -12,7 +12,7 @@ class ReservationDAO
 public:
 	ReservationDAO();
 
-	void createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, unsigned short paymentFrequency);
+	void createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, PaymentFrequency aPaymentFrequency);
 
 	void processModuleData(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime, unsigned short km);
 

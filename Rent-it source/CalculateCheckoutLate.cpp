@@ -3,7 +3,7 @@
 namespace ReservationManager
 {
 
-unsigned long CalculateCheckoutLate::calculateTotalCosts(unsigned long subscriptionPrice, unsigned short paymentFrequency, unsigned short km, unsigned short vehicleId)
+unsigned long CalculateCheckoutLate::calculateTotalCosts(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
 {
 	return 0;
 }

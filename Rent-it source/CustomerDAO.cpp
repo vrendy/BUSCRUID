@@ -4,6 +4,9 @@
 namespace CustomerManager
 {
 
+CustomerDAO::CustomerDAO()
+{}
+
 void CustomerDAO::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr)
 {
 	Customer c(name, adress, residence, email, bankNbr);

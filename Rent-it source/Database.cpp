@@ -29,7 +29,12 @@ std::vector<VehicleManager::Vehicle>& Database::getVehicleTable() {
 	return vehicleTable;
 }
 
-std::vector<paymentFreeRow>& Database::getPaymentFreeTable()
+std::vector<paymentRow>& Database::getPaymentTable()
 {
 	return paymentTable;
+}
+
+std::vector<pricePerKmRow>& Database::getPricePerKmTable()
+{
+	return pricePerKmTable;
 }

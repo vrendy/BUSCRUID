@@ -3,7 +3,7 @@
 
 #include "Car.h"
 #include "Subscription.h"
-#include "CalculationMethod.h"
+//#include "CalculationMethod.h"
 
 namespace ReservationManager
 {
@@ -16,7 +16,7 @@ enum PaymentFrequency
 class Reservation
 {
 public:
-	Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime, unsigned short aPaymentFrequency);
+	Reservation(unsigned long aCustomerId, unsigned short aVehicleId, unsigned short aStartTime, unsigned short anEndTime, PaymentFrequency aPaymentFrequency);
 	void calculateTotalCosts();
 	bool checkoutOnTime();
 	void setKm(unsigned short km);
@@ -46,7 +46,7 @@ private:
 	unsigned short				vehicleId;
 	unsigned short 				startTime;
 	unsigned short 				endTime;
-	unsigned short				paymentFrequency;
+	PaymentFrequency			paymentFrequency;
 	unsigned short				checkInTime;
 	unsigned short				checkOutTime;
 	unsigned short 				distance;		// Distance in Kilo meter

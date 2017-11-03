@@ -2,7 +2,6 @@
 #define RESERVATIONMANAGER_CALCULATION_METHOD_H
 
 #include "Reservation.h"
-#include "Car.h"
 
 namespace ReservationManager
 {
@@ -10,7 +9,7 @@ class CalculationMethod
 {
 public:
 	CalculationMethod();
-	unsigned long calculateTotalCosts(unsigned long subscriptionPrice, unsigned short paymentFrequency, unsigned short km, unsigned short vehicleId);
+	unsigned long calculateTotalCosts(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
 
 };
 
