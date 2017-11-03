@@ -8,6 +8,9 @@
 #include "Database.h"
 #include "CustomerDAO.h"
 
+#include <string>
+#include <iostream>
+
 void initDatabase()
 {
 	// Fill Database payment data
@@ -39,7 +42,9 @@ void initDatabase()
 int main(int argc, char **argv) {
 	initDatabase();
 	CustomerManager::CustomerDAO cusManager;
-	cusManager.createCustomer("Chris van Uffelen", "Ruitenberglaan 69", "Arnhem", "Chris.vanUffelen@han.nl", "NL69FIETS012345678");
+	cusManager.createCustomer(std::string("Chris van Uffelen"), std::string("Ruitenberglaan 69"), std::string("Arnhem"), std::string("Chris.vanUffelen@han.nl"), std::string("NL69FIETS012345678"), CustomerManager::SubscriptionType::paid);
+	std::cout << "SubscriptionType::paid value: " << CustomerManager::SubscriptionType::paid << std::endl;
+	std::cout << "Customer with ID: " << Database::getDatabase().getCustomerTable().at(0).getCustomerId() << " and SubscriptionType (0 for free, 1 for paid): " << Database::getDatabase().getCustomerTable().at(0).getSubscription().getSubscriptionType() << std::endl;
 	return 0;
 }
 

@@ -2,9 +2,21 @@
 
 namespace CustomerManager
 {
-PaidSubscription::PaidSubscription(unsigned short aKmFree) : Subscription(), kmFree(aKmFree)
+static unsigned short kmFree = 100;
+
+PaidSubscription::PaidSubscription() : type(SubscriptionType::paid)
 {
 
+}
+
+PaidSubscription::PaidSubscription(const PaidSubscription& aPaidSubscription)
+	: type(aPaidSubscription.type) // Kan dit ook type(SubscriptionType::paid) maken
+{
+}
+
+unsigned short PaidSubscription::getKmFree()
+{
+	return kmFree;
 }
 
 }  // namespace CustomerManager

@@ -9,7 +9,7 @@ namespace CustomerManager
 class Customer
 {
 public:
-	Customer(std::string aName, std::string anAdress, std::string aResidence, std::string anEmail, std::string aBankNbr);
+	Customer(std::string aName, std::string anAdress, std::string aResidence, std::string anEmail, std::string aBankNbr, SubscriptionType subType);
 
 	unsigned long getCustomerId();
 	Subscription& getSubscription();

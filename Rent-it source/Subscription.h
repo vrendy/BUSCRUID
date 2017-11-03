@@ -8,11 +8,8 @@
 #ifndef CUSTOMERMANAGER_SUBSCRIPTION_H_
 #define CUSTOMERMANAGER_SUBSCRIPTION_H_
 
-#include "Reservation.h"
-
 namespace CustomerManager
 {
-
 enum SubscriptionType {
 	free, paid
 };
@@ -22,6 +19,7 @@ class Subscription
 public:
 	Subscription();
 	Subscription(unsigned short aFee, SubscriptionType type);
+	Subscription(const Subscription& aSubscription);
 
 	SubscriptionType getSubscriptionType() {
 		return type;

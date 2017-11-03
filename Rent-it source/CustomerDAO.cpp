@@ -7,9 +7,10 @@ namespace CustomerManager
 CustomerDAO::CustomerDAO()
 {}
 
-void CustomerDAO::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr)
+void CustomerDAO::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr, SubscriptionType subType)
 {
-	Customer c(name, adress, residence, email, bankNbr);
+	Customer c(name, adress, residence, email, bankNbr, subType);
+	std::cout << __PRETTY_FUNCTION__ << " " << name << " Subscription type: " << subType << std::endl;
 	Database::getDatabase().getCustomerTable().push_back(c);
 }
 

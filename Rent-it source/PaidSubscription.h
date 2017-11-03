@@ -7,9 +7,17 @@ namespace CustomerManager
 {
 class PaidSubscription : public Subscription
 {
-	PaidSubscription(unsigned short aKmFree);
+public:
+	PaidSubscription();
+	PaidSubscription(const PaidSubscription& aPaidSubscription);
+
+	unsigned short getKmFree();
+
+	SubscriptionType getSubscriptionType() {
+		return type;
+	}
 private:
-	unsigned short kmFree;
+	SubscriptionType type;
 };
 
 }  // namespace CustomerManager

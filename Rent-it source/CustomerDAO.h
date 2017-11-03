@@ -15,7 +15,7 @@ class CustomerDAO
 public:
 	CustomerDAO();
 
-	void createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr);
+	void createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr, SubscriptionType subType);
 
 	Customer getCustomer(unsigned long customerId);
 
