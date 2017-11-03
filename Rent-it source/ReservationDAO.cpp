@@ -24,7 +24,7 @@ void ReservationDAO::processModuleData(unsigned long customerId, unsigned short 
 				r.setKm(km);
 				r.calculateTotalCosts();
 			}
-			else if(/*niet ingechecked en uitgechecked reservering verlopen*/) // TODO check with current time from Rent-it if this is the reservation that has not been checked in or out and has finished
+			else if(/*niet ingechecked en uitgechecked reservering verlopen*/0) // TODO check with current time from Rent-it if this is the reservation that has not been checked in or out and has finished
 			{
 
 				r.calculateTotalCosts();

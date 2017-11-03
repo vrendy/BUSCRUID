@@ -6,7 +6,6 @@
 
 #include "Customer.h"
 #include "Database.h"
-#include "PaymentFrequency.h"
 
 namespace CustomerManager
 {

@@ -7,6 +7,9 @@ namespace CustomerManager
 {
 class PaidSubscription : public Subscription
 {
+	PaidSubscription(unsigned short aKmFree);
+private:
+	unsigned short kmFree;
 };
 
 }  // namespace CustomerManager

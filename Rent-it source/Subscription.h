@@ -8,7 +8,7 @@
 #ifndef CUSTOMERMANAGER_SUBSCRIPTION_H_
 #define CUSTOMERMANAGER_SUBSCRIPTION_H_
 
-#include "PaymentFrequency.h"
+#include "Reservation.h"
 
 namespace CustomerManager
 {
@@ -21,7 +21,7 @@ class Subscription
 {
 public:
 	Subscription();
-	Subscription(unsigned short aFee, SubscriptionType type, PaymentFrequency aFrequency);
+	Subscription(unsigned short aFee, SubscriptionType type);
 
 	SubscriptionType getSubscriptionType() {
 		return type;
@@ -30,7 +30,6 @@ public:
 private:
 	unsigned short fee;
 	SubscriptionType type;
-	PaymentFrequency paymentFrequency;
 };
 }  // namespace CustomerManager
 

@@ -5,6 +5,12 @@
 
 namespace VehicleManager
 {
+
+enum VehicleType
+{
+	car, station
+};
+
 class Vehicle
 {
 public:

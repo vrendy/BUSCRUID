@@ -28,3 +28,8 @@ std::vector<ReservationManager::Reservation>& Database::getReservationTable()
 std::vector<VehicleManager::Vehicle>& Database::getVehicleTable() {
 	return vehicleTable;
 }
+
+std::vector<paymentFreeRow>& Database::getPaymentFreeTable()
+{
+	return paymentTable;
+}

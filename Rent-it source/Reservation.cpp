@@ -11,9 +11,9 @@ Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, u
 
 }
 
-void Reservation::calculateTotalCosts(type)
+void Reservation::calculateTotalCosts()
 {
-	calculationMethod(type)
+//	calculationMethod(type)
 }
 
 bool Reservation::checkoutOnTime()

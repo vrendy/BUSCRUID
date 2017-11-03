@@ -7,6 +7,12 @@
 
 namespace ReservationManager
 {
+
+enum PaymentFrequency
+{
+	hour, day, weekend, week
+};
+
 class Reservation
 {
 public:
