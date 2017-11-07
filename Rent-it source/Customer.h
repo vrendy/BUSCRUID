@@ -3,16 +3,20 @@
 
 #include "Subscription.h"
 #include <string>
+#include <memory>
 
 namespace CustomerManager
 {
+
+typedef std::shared_ptr<Subscription> subscription_ptr;
+
 class Customer
 {
 public:
 	Customer(std::string aName, std::string anAdress, std::string aResidence, std::string anEmail, std::string aBankNbr, SubscriptionType subType);
-
+	Customer(const Customer& aCustomer);
 	unsigned long getCustomerId();
-	Subscription& getSubscription();
+	subscription_ptr getSubscription();
 
 private:
 	unsigned long customerId;
@@ -22,7 +26,7 @@ private:
 	std::string email;
 	std::string bankNbr;
 
-	Subscription subscription;
+	subscription_ptr subscription;
 };
 
 }  // namespace CustomerManager

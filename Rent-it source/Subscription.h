@@ -17,17 +17,20 @@ enum SubscriptionType {
 class Subscription
 {
 public:
-	Subscription();
-	Subscription(unsigned short aFee, SubscriptionType type);
+	Subscription(SubscriptionType aType);
+	Subscription(unsigned short aFee, SubscriptionType aType);
 	Subscription(const Subscription& aSubscription);
+	Subscription operator=(const Subscription& s);
 
 	SubscriptionType getSubscriptionType() {
 		return type;
 	}
 
+protected:
+	SubscriptionType type;
+
 private:
 	unsigned short fee;
-	SubscriptionType type;
 };
 }  // namespace CustomerManager
 

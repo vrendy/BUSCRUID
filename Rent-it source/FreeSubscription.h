@@ -12,12 +12,6 @@ public:
 //	FreeSubscription(unsigned short aFee, SubscriptionType type, unsigned short aKmFree);
 
 	unsigned short getKmFree();
-
-	SubscriptionType getSubscriptionType() {
-		return type;
-	}
-private:
-	SubscriptionType type;
 };
 }  // namespace CustomerManager
 #endif

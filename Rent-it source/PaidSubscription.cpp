@@ -1,16 +1,11 @@
 #include "PaidSubscription.h"
+#include <iostream>
 
 namespace CustomerManager
 {
 static unsigned short kmFree = 100;
 
-PaidSubscription::PaidSubscription() : type(SubscriptionType::paid)
-{
-
-}
-
-PaidSubscription::PaidSubscription(const PaidSubscription& aPaidSubscription)
-	: type(aPaidSubscription.type) // Kan dit ook type(SubscriptionType::paid) maken
+PaidSubscription::PaidSubscription() : Subscription(SubscriptionType::paid)
 {
 }
 

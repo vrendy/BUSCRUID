@@ -3,6 +3,7 @@
 #include "PaidSubscription.h"
 
 #include <iostream>
+#include <memory>
 
 namespace CustomerManager
 {
@@ -16,21 +17,24 @@ Customer::Customer(std::string aName, std::string anAddress, std::string aReside
 	{
 	case SubscriptionType::free:
 	{
-		subscription = FreeSubscription();
+		subscription = std::make_shared<FreeSubscription>();
 		break;
 	}
 	case SubscriptionType::paid:
-		subscription = PaidSubscription();
+		subscription = std::make_shared<PaidSubscription>();
 		break;
 	}
-	std::cout << __PRETTY_FUNCTION__ << " " << name << " Subscription type: " << subscription.getSubscriptionType() << std::endl;
+}
+
+Customer::Customer(const Customer& c) : customerId(c.customerId), name(c.name), address(c.address), residence(c.residence), email(c.email), bankNbr(c.bankNbr), subscription(c.subscription)
+{
 }
 
 unsigned long Customer::getCustomerId() {
 	return customerId;
 }
 
-Subscription& Customer::getSubscription() {
+subscription_ptr Customer::getSubscription() {
 	return subscription;
 }
 

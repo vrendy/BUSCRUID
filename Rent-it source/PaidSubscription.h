@@ -10,14 +10,9 @@ class PaidSubscription : public Subscription
 public:
 	PaidSubscription();
 	PaidSubscription(const PaidSubscription& aPaidSubscription);
+	PaidSubscription operator=(const PaidSubscription& ps);
 
 	unsigned short getKmFree();
-
-	SubscriptionType getSubscriptionType() {
-		return type;
-	}
-private:
-	SubscriptionType type;
 };
 
 }  // namespace CustomerManager

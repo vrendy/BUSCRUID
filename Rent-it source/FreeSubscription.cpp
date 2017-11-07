@@ -5,7 +5,7 @@ namespace CustomerManager
 
 static unsigned short kmFree = 0;
 
-FreeSubscription::FreeSubscription()  : type(SubscriptionType::free)
+FreeSubscription::FreeSubscription() : Subscription(SubscriptionType::free)
 {
 
 }
