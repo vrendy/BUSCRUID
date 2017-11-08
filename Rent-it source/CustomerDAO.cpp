@@ -7,6 +7,14 @@ namespace CustomerManager
 CustomerDAO::CustomerDAO()
 {}
 
+CustomerDAO::~CustomerDAO() {}
+
+/* static */ CustomerDAO CustomerDAO::getCustomerDAO()
+{
+	static CustomerDAO customerDAO;
+	return customerDAO;
+}
+
 void CustomerDAO::createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr, SubscriptionType subType)
 {
 	Customer c(name, adress, residence, email, bankNbr, subType);

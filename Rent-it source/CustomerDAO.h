@@ -12,8 +12,12 @@ namespace CustomerManager
 
 class CustomerDAO
 {
+	CustomerDAO(const Customer& aCustomer) = delete;
+//	~CustomerDAO() = delete;
 public:
 	CustomerDAO();
+	~CustomerDAO(); // Deze moet toch private? maar geeft error wanneer private
+	static CustomerDAO getCustomerDAO();
 
 	void createCustomer(std::string name, std::string adress, std::string residence, std::string email, std::string bankNbr, SubscriptionType subType);
 

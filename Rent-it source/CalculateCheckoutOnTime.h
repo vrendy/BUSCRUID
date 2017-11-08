@@ -6,14 +6,17 @@
 
 namespace ReservationManager
 {
-class CalculateCheckoutOnTime : public ReservationManager::CalculationMethod
+class CalculateCheckoutOnTime : public CalculationMethod
 {
 public:
-	unsigned long calculateTotalCosts(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
+	CalculateCheckoutOnTime();
+	virtual ~CalculateCheckoutOnTime();
 
-	unsigned long calculateTotalKmCost(CustomerManager::SubscriptionType subscriptionType, unsigned short km, VehicleManager::VehicleType vt);
+	unsigned long calculateTotalCosts(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
 
-	unsigned long calculateTotalTimeCost(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt);
+	unsigned long calculateTotalKmCost(CustomerManager::SubscriptionType subType, unsigned short km, VehicleManager::VehicleType vt);
+
+	unsigned long calculateTotalTimeCost(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt);
 
 };
 

@@ -10,7 +10,7 @@ class PaidSubscription : public Subscription
 public:
 	PaidSubscription();
 	PaidSubscription(const PaidSubscription& aPaidSubscription);
-	PaidSubscription operator=(const PaidSubscription& ps);
+//	PaidSubscription operator=(const PaidSubscription& ps);
 
 	unsigned short getKmFree();
 };

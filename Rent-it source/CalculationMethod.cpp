@@ -8,8 +8,8 @@ CalculationMethod::CalculationMethod()
 
 }
 
-unsigned long CalculationMethod::calculateTotalCosts(CustomerManager::SubscriptionType subscriptionType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
+CalculationMethod::~CalculationMethod()
 {
-	return 0;
+
 }
 }  // namespace ReservationManager

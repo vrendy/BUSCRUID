@@ -3,11 +3,13 @@
 
 #include "Car.h"
 #include "Subscription.h"
-//#include "CalculationMethod.h"
+#include <memory>
+
+
 
 namespace ReservationManager
 {
-
+class CalculationMethod;
 enum PaymentFrequency
 {
 	hour, day, weekend, week
@@ -51,6 +53,8 @@ private:
 	unsigned short				checkOutTime;
 	unsigned short 				distance;		// Distance in Kilo meter
 	unsigned long 				totalCosts;
+
+	std::shared_ptr<ReservationManager::CalculationMethod> method;
 
 };
 

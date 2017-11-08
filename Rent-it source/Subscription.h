@@ -8,19 +8,21 @@
 #ifndef CUSTOMERMANAGER_SUBSCRIPTION_H_
 #define CUSTOMERMANAGER_SUBSCRIPTION_H_
 
+#include <memory>
+
 namespace CustomerManager
 {
 enum SubscriptionType {
 	free, paid
 };
-
+class Subscription;
+typedef std::shared_ptr<Subscription> subscription_ptr;
 class Subscription
 {
 public:
 	Subscription(SubscriptionType aType);
 	Subscription(unsigned short aFee, SubscriptionType aType);
 	Subscription(const Subscription& aSubscription);
-	Subscription operator=(const Subscription& s);
 
 	SubscriptionType getSubscriptionType() {
 		return type;

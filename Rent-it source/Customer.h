@@ -3,13 +3,9 @@
 
 #include "Subscription.h"
 #include <string>
-#include <memory>
 
 namespace CustomerManager
 {
-
-typedef std::shared_ptr<Subscription> subscription_ptr;
-
 class Customer
 {
 public:
