@@ -17,7 +17,9 @@ public:
 
 	std::vector<Vehicle> getVehicles(Location location, unsigned short startTime, unsigned short endTime);
 
-	bool isAvailable(int vechicleId);
+	bool isAvailable(int vehicleId);
+
+	Vehicle getVehicle(unsigned long vehicleId);
 
 };
 

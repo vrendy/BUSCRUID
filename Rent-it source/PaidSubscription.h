@@ -13,6 +13,8 @@ public:
 //	PaidSubscription operator=(const PaidSubscription& ps);
 
 	unsigned short getKmFree();
+private:
+	unsigned short kmFree;
 };
 
 }  // namespace CustomerManager

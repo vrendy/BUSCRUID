@@ -35,8 +35,8 @@ void Reservation::calculateTotalCosts()
 		timeToBePaidFor = ((endTime - startTime) + (checkOutTime - endTime)); // Duration of reservation + duration of extra time
 	}
 
-	CustomerManager::SubscriptionType subType = CustomerManager::CustomerDAO::getCustomerDAO().getCustomer(customerId).getSubscription()->getSubscriptionType();
-	method->calculateTotalCosts(subType, paymentFrequency, timeToBePaidFor , distance, vehicleId);
+	CustomerManager::subscription_ptr sub = CustomerManager::CustomerDAO::getCustomerDAO().getCustomer(customerId).getSubscription();
+	method->calculateTotalCosts(sub, paymentFrequency, timeToBePaidFor , distance, vehicleId);
 }
 
 bool Reservation::checkoutOnTime()

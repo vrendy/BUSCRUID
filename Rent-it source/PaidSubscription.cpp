@@ -3,9 +3,7 @@
 
 namespace CustomerManager
 {
-static unsigned short kmFree = 100;
-
-PaidSubscription::PaidSubscription() : Subscription(SubscriptionType::paid)
+PaidSubscription::PaidSubscription() : Subscription(SubscriptionType::paid), kmFree(100)
 {
 }
 

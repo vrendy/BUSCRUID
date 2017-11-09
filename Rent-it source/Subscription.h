@@ -21,18 +21,21 @@ class Subscription
 {
 public:
 	Subscription(SubscriptionType aType);
-	Subscription(unsigned short aFee, SubscriptionType aType);
+	Subscription(SubscriptionType aType, unsigned short aFee);
 	Subscription(const Subscription& aSubscription);
 
 	SubscriptionType getSubscriptionType() {
 		return type;
 	}
 
+	virtual unsigned short getKmFree();
+
 protected:
 	SubscriptionType type;
 
 private:
 	unsigned short fee;
+	unsigned short kmFree;
 };
 }  // namespace CustomerManager
 

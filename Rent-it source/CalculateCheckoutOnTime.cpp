@@ -9,7 +9,7 @@ CalculateCheckoutOnTime::CalculateCheckoutOnTime() : CalculationMethod() {}
 
 CalculateCheckoutOnTime::~CalculateCheckoutOnTime() {}
 
-unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
+unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
 {
 
 	// Get vehicle type from database
@@ -23,23 +23,22 @@ unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::Subs
 	}
 
 	// Delegate calculations of total KM and total TIME
-	return calculateTotalKmCost(subType, km, vt) + calculateTotalTimeCost(subType, paymentFrequency, timeToBePaidFor, vt);
+	return calculateTotalKmCost(sub, km, vt) + calculateTotalTimeCost(sub, paymentFrequency, timeToBePaidFor, vt);
 }
 
-unsigned long CalculateCheckoutOnTime::calculateTotalKmCost(CustomerManager::SubscriptionType subType, unsigned short km, VehicleManager::VehicleType vt)
+unsigned long CalculateCheckoutOnTime::calculateTotalKmCost(CustomerManager::subscription_ptr sub, unsigned short km, VehicleManager::VehicleType vt)
 {
 	unsigned short pricePerKm = 0;
 	unsigned short kmFree = 0;	//TODO: GET N FREE KM AND SUBSTRACT THEM BEFORE CALCULATING KM * COST
 	for(pricePerKmRow row : Database::getDatabase().getPricePerKmTable())
 	{
-		if(row.first == subType && row.second.first == vt)
+		if(row.first == sub->getSubscriptionType() && row.second.first == vt)
 		{
 			pricePerKm = row.second.second;
 		}
 	}
 	//temp
-	if(subType == CustomerManager::SubscriptionType::paid)
-		kmFree = 100;
+	kmFree = sub->getKmFree();
 	return (km - kmFree) * pricePerKm;
 }
 // abonnementstype, type auto, geld in eurocent
@@ -48,14 +47,14 @@ unsigned long CalculateCheckoutOnTime::calculateTotalKmCost(CustomerManager::Sub
 // second.first = type auto
 // second.second = geld in eurocent
 
-unsigned long CalculateCheckoutOnTime::calculateTotalTimeCost(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt)
+unsigned long CalculateCheckoutOnTime::calculateTotalTimeCost(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt)
 {
 	unsigned short costPerTimeUnit = 0;
 
 	// Get cost per time unit
 	for(paymentRow row : Database::getDatabase().getPaymentTable())
 	{
-		if(row.first == subType && row.second.first == paymentFrequency && row.second.second.first == vt)
+		if(row.first == sub->getSubscriptionType() && row.second.first == paymentFrequency && row.second.second.first == vt)
 			costPerTimeUnit = row.second.second.second; // Top kek
 
 	}

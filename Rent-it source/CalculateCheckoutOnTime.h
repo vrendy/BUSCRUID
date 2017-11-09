@@ -12,11 +12,11 @@ public:
 	CalculateCheckoutOnTime();
 	virtual ~CalculateCheckoutOnTime();
 
-	unsigned long calculateTotalCosts(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
+	unsigned long calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
 
-	unsigned long calculateTotalKmCost(CustomerManager::SubscriptionType subType, unsigned short km, VehicleManager::VehicleType vt);
+	unsigned long calculateTotalKmCost(CustomerManager::subscription_ptr sub, unsigned short km, VehicleManager::VehicleType vt);
 
-	unsigned long calculateTotalTimeCost(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt);
+	unsigned long calculateTotalTimeCost(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, VehicleManager::VehicleType vt);
 
 };
 

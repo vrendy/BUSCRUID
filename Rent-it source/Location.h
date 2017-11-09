@@ -12,7 +12,11 @@ namespace VehicleManager
 {
 class Location
 {
-
+public:
+	Location();
+	bool operator==(const Location& l);
+private:
+	unsigned short id;
 };
 }
 

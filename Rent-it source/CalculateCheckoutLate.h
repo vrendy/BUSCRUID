@@ -10,7 +10,7 @@ class CalculateCheckoutLate : public ReservationManager::CalculationMethod
 public:
 	CalculateCheckoutLate();
 	virtual ~CalculateCheckoutLate();
-	unsigned long calculateTotalCosts(CustomerManager::SubscriptionType subType, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
+	unsigned long calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId);
 
 };
 

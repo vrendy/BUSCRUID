@@ -3,9 +3,7 @@
 namespace CustomerManager
 {
 
-static unsigned short kmFree = 0;
-
-FreeSubscription::FreeSubscription() : Subscription(SubscriptionType::free)
+FreeSubscription::FreeSubscription() : Subscription(SubscriptionType::free), kmFree(0)
 {
 
 }

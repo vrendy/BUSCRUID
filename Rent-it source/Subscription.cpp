@@ -13,20 +13,25 @@
 
 namespace CustomerManager
 {
-	Subscription::Subscription(SubscriptionType aType) : fee(0), type(aType)
+	Subscription::Subscription(SubscriptionType aType) : type(aType), fee(0), kmFree(0)
 	{
 	}
 
-	Subscription::Subscription(unsigned short aFee, SubscriptionType aType)
-		: fee(aFee), type(aType)
+	Subscription::Subscription(SubscriptionType aType, unsigned short aFee)
+		: type(aType), fee(aFee), kmFree(0)
 	{
 
 	}
 
 	Subscription::Subscription(const Subscription& aSubscription)
-		: fee(aSubscription.fee), type(aSubscription.type)
+		: type(aSubscription.type), fee(aSubscription.fee), kmFree(aSubscription.kmFree)
 	{
 
+	}
+
+	unsigned short Subscription::getKmFree()
+	{
+		return kmFree;
 	}
 }
 

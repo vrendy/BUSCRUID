@@ -1,4 +1,5 @@
 #include "VehicleDAO.h"
+#include <iostream>
 
 namespace VehicleManager
 {
@@ -14,13 +15,35 @@ std::vector<Location> VehicleDAO::getAllLocations()
 
 std::vector<Vehicle> VehicleDAO::getVehicles(Location location, unsigned short startTime, unsigned short endTime)
 {
-	return Database::getDatabase().getVehicleTable();
+	std::vector<Vehicle> vehicles;
+	for(Vehicle v : Database::getDatabase().getVehicleTable()) {
+		if(v.getLocation() == location)
+			vehicles.push_back(v);
+	}
+	return vehicles;
 }
 
-bool VehicleDAO::isAvailable(int vechicleId)
+bool VehicleDAO::isAvailable(int vehicleId)
 {
-	//TO DO
-	return 1;
+	for(Vehicle v : Database::getDatabase().getVehicleTable()) {
+		if(v.getId() == vehicleId)
+			return v.isAvailable();
+	}
+	return 0;
+}
+
+Vehicle VehicleDAO::getVehicle(unsigned long vehicleId)
+{
+	try {
+		for(Vehicle v : Database::getDatabase().getVehicleTable())  {
+			if(v.getId() == vehicleId) {
+				return v;
+			}
+		}
+	}
+	catch(int e) {
+		std::cout << "customerId is invalid\n" << "Exception: " + e << std::endl;
+	}
 }
 
 

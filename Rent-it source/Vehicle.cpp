@@ -10,7 +10,7 @@ static unsigned short vehicleCounter = 0;
 //
 //}
 
-Vehicle::Vehicle(VehicleType aType) : id(++vehicleCounter), type(aType)
+Vehicle::Vehicle(VehicleType aType) : id(++vehicleCounter), type(aType), available(1)
 {
 
 }
@@ -38,6 +38,11 @@ VehicleType Vehicle::getType()
 
 Location Vehicle::getLocation() {
 	return location;
+}
+
+bool Vehicle::isAvailable()
+{
+	return available;
 }
 
 }  // namespace Design Class

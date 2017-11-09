@@ -21,10 +21,12 @@ public:
 	unsigned short getId();
 	VehicleType getType();
 	Location getLocation();
+	bool isAvailable();
 private:
 	unsigned short 		id;
 	VehicleType 		type;
 	Location 			location;
+	bool available;
 };
 
 }  // namespace VehicleManager
