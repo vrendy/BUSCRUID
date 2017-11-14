@@ -38,3 +38,8 @@ std::vector<pricePerKmRow>& Database::getPricePerKmTable()
 {
 	return pricePerKmTable;
 }
+
+std::vector<VehicleManager::Location>& Database::getLocationTable()
+{
+	return locationTable;
+}

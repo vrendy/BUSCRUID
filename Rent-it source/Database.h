@@ -7,6 +7,7 @@
 #include "CustomerDAO.h"
 #include "ReservationDAO.h"
 #include "VehicleDAO.h"
+#include "Location.h"
 
 
 // abonnementstype, tijdseenheid, type auto, geld in eurocent
@@ -25,6 +26,7 @@ public:
 	std::vector<VehicleManager::Vehicle>& getVehicleTable();
 	std::vector<paymentRow>& getPaymentTable();
 	std::vector<pricePerKmRow>& getPricePerKmTable();
+	std::vector<VehicleManager::Location>& getLocationTable();
 
 private:
 	~Database();
@@ -34,6 +36,7 @@ private:
 	std::vector<VehicleManager::Vehicle> vehicleTable;
 	std::vector<paymentRow> paymentTable;
 	std::vector<pricePerKmRow> pricePerKmTable;
+	std::vector<VehicleManager::Location> locationTable; // Not sure om hier een tabel van te maken
 
 
 };

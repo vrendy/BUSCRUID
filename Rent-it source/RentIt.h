@@ -3,6 +3,7 @@
 
 
 #include <string>
+#include <vector>
 
 #include "Location.h"
 #include "Car.h"
@@ -19,11 +20,11 @@ private:
 	VehicleManager::VehicleDAO vehicleManager;
 
 public:
-	void getLocations();
+	std::vector<VehicleManager::Location>& getLocations();
 
-	void addCustomer(std::string name, std::string address, std::string city, std::string email, std::string bankNbr);
+	void addCustomer(std::string name, std::string address, std::string city, std::string email, std::string bankNbr, CustomerManager::SubscriptionType subType);
 
-	void getAvailableVehicles(VehicleManager::Location location, unsigned short startTime, unsigned short endTime);
+	std::vector<VehicleManager::Vehicle>& getAvailableVehicles(VehicleManager::Location location, unsigned short startTime, unsigned short endTime);
 
 	void chooseCar(VehicleManager::Car car);
 
