@@ -17,7 +17,7 @@ std::vector<Vehicle> VehicleDAO::getVehicles(Location location, unsigned short s
 {
 	std::vector<Vehicle> vehicles;
 	for(Vehicle v : Database::getDatabase().getVehicleTable()) {
-		if(v.getLocation() == location)
+		if(v.getLocation() == location && v.isAvailable()) // We hebben nog niks bedacht hoe we startTime en endTime gebruiken om availableVehicles op te halen
 			vehicles.push_back(v);
 	}
 	return vehicles;
@@ -42,7 +42,7 @@ Vehicle VehicleDAO::getVehicle(unsigned long vehicleId)
 		}
 	}
 	catch(int e) {
-		std::cout << "customerId is invalid\n" << "Exception: " + e << std::endl;
+		std::cout << "vehicleId is invalid\n" << "Exception: " + e << std::endl;
 	}
 }
 
