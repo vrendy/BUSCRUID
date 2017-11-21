@@ -1,6 +1,7 @@
 #include "ReservationDAO.h"
 
 #include <vector>
+#include <iostream>
 
 namespace ReservationManager
 {
@@ -12,7 +13,7 @@ void ReservationDAO::createReservation(unsigned long customerId, unsigned short 
 
 void ReservationDAO::processModuleData(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime, unsigned short km)
 {
-	for(Reservation r : Database::getDatabase().getReservationTable())
+	for(Reservation& r : Database::getDatabase().getReservationTable())
 	{
 		// Get customer from db where customer checkInTime is within reservation begin and end time, for that customer, calculate totalcosts
 		if(r.getCustomerId() == customerId && r.getVehicleId() == vehicleId) // Customer checked in with car
@@ -33,7 +34,25 @@ void ReservationDAO::processModuleData(unsigned long customerId, unsigned short 
 	}
 }
 
+ReservationDAO& ReservationDAO::getReservationDAO() {
+	static ReservationDAO rDAO;
+	return rDAO;
+}
+
 Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime)
 {
+	try {
+		for (auto it = Database::getDatabase().getReservationTable().begin(); it != Database::getDatabase().getReservationTable().end(); ++it) {
+			if (it->getCustomerId() == customerId && it->getVehicleId() == vehicleId && it->getStartTime() <= checkInTime) {
+				return *it;
+			}
+		}
+		throw("No Reservation with given parameters found ");
+	}
+	catch(std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+
 }
+
 }  // namespace ReservationManager

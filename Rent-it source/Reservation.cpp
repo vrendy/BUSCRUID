@@ -56,11 +56,16 @@ void Reservation::setTotalCosts(unsigned long total)
 
 void Reservation::setCheckInTime(unsigned short aCheckInTime)
 {
-	startTime = aCheckInTime;
+	checkInTime = aCheckInTime;
 }
 
 void Reservation::setCheckOutTime(unsigned short aCheckOutTime)
 {
-	endTime = aCheckOutTime;
+	checkOutTime = aCheckOutTime;
+}
+
+std::ostream& operator<<(std::ostream& os, const Reservation& r) {
+	os << "----------"<< "\ncustomerId: " << r.getCustomerId() << "\nvehicleId: " << r.getVehicleId() << "\nstartTime: " << r.getStartTime() << "\nendTime: " << r.getEndTime() << "\ncheckInTime: " << r.getCheckInTime() << "\ncheckOutTime: " << r.getCheckOutTime() << "\n----------" << std::endl;
+	return os;
 }
 }  // namespace ReservationManager

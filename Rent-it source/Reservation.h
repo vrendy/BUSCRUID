@@ -4,6 +4,7 @@
 #include "Car.h"
 #include "Subscription.h"
 #include <memory>
+#include <iostream>
 
 
 
@@ -42,6 +43,14 @@ public:
 		return vehicleId;
 	}
 
+	unsigned short getCheckInTime() const {
+		return checkInTime;
+	}
+
+	unsigned short getCheckOutTime() const {
+		return checkOutTime;
+	}
+
 private:
 	unsigned long				reservationId;
 	unsigned long				customerId;
@@ -57,6 +66,8 @@ private:
 	std::shared_ptr<ReservationManager::CalculationMethod> method;
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Reservation& r);
 
 }  // namespace ReservationManager
 #endif

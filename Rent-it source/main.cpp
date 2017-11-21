@@ -7,6 +7,7 @@
 
 #include "Database.h"
 //#include "CustomerDAO.h"
+//#include "ReservationDAO.h"
 
 #include <string>
 #include <iostream>
@@ -37,15 +38,32 @@ void initDatabase()
 	Database::getDatabase().getPricePerKmTable().push_back(std::make_pair(CustomerManager::SubscriptionType::paid, std::make_pair(VehicleManager::VehicleType::car, 25)));
 	Database::getDatabase().getPricePerKmTable().push_back(std::make_pair(CustomerManager::SubscriptionType::paid, std::make_pair(VehicleManager::VehicleType::station, 30)));
 
+	//Add car(s) to Database
+	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::car));
+	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::station));
+}
+
+void useCar(unsigned long customerId, unsigned short vehicleId, unsigned short startTimeStamp, unsigned short endTimeStamp, unsigned short nKm) {
+	ReservationManager::ReservationDAO::getReservationDAO().processModuleData(customerId, vehicleId, startTimeStamp, endTimeStamp, nKm);
 }
 
 class CustomerDAO;
+class ReservationDAO;
 
 int main(int argc, char **argv) {
 	initDatabase();
 //	CustomerManager::CustomerDAO cusManager;
 	CustomerManager::CustomerDAO::getCustomerDAO().createCustomer(std::string("Chris van Uffelen"), std::string("Ruitenberglaan 69"), std::string("Arnhem"), std::string("Chris.vanUffelen@han.nl"), std::string("NL69FIETS012345678"), CustomerManager::SubscriptionType::paid);
 	std::cout << "Customer with ID: " << Database::getDatabase().getCustomerTable().at(0).getCustomerId() << " and SubscriptionType (0 for free, 1 for paid): " << Database::getDatabase().getCustomerTable().at(0).getSubscription()->getSubscriptionType() << std::endl;
+	std::cout << "Vehicle 1 ID: " << Database::getDatabase().getVehicleTable().at(0).getId() << "\nVehicle 2 ID: " << Database::getDatabase().getVehicleTable().at(1).getId() << std::endl;
+
+	//Maak een reservatie en gebruik de auto binnen deze tijden.
+	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,50,200, ReservationManager::PaymentFrequency::day);
+	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 160, 200);
+	std::cout << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,160);
+
+
+
 	return 0;
 }
 

@@ -10,7 +10,9 @@ namespace ReservationManager
 class ReservationDAO
 {
 public:
-	ReservationDAO();
+	ReservationDAO(){};
+
+	static ReservationDAO& getReservationDAO();
 
 	void createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, PaymentFrequency aPaymentFrequency);
 
