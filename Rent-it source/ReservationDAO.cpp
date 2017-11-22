@@ -41,18 +41,12 @@ ReservationDAO& ReservationDAO::getReservationDAO() {
 
 Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime)
 {
-	try {
-		for (auto it = Database::getDatabase().getReservationTable().begin(); it != Database::getDatabase().getReservationTable().end(); ++it) {
-			if (it->getCustomerId() == customerId && it->getVehicleId() == vehicleId && it->getStartTime() <= checkInTime) {
-				return *it;
-			}
+	for (auto it = Database::getDatabase().getReservationTable().begin(); it != Database::getDatabase().getReservationTable().end(); ++it) {
+		if (it->getCustomerId() == customerId && it->getVehicleId() == vehicleId && it->getStartTime() <= checkInTime) {
+			return *it;
 		}
-		throw("No Reservation with given parameters found ");
 	}
-	catch(std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-
+	throw("No Reservation with given parameters was found ");
 }
 
 }  // namespace ReservationManager

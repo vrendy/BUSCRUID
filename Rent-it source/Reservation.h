@@ -51,6 +51,10 @@ public:
 		return checkOutTime;
 	}
 
+	unsigned long getTotalCosts() const {
+		return totalCosts;
+	}
+
 private:
 	unsigned long				reservationId;
 	unsigned long				customerId;

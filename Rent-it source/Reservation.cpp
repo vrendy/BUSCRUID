@@ -36,7 +36,8 @@ void Reservation::calculateTotalCosts()
 	}
 
 	CustomerManager::subscription_ptr sub = CustomerManager::CustomerDAO::getCustomerDAO().getCustomer(customerId).getSubscription();
-	method->calculateTotalCosts(sub, paymentFrequency, timeToBePaidFor , distance, vehicleId);
+	totalCosts = method->calculateTotalCosts(sub, paymentFrequency, timeToBePaidFor , distance, vehicleId);
+
 }
 
 bool Reservation::checkoutOnTime()
@@ -65,7 +66,7 @@ void Reservation::setCheckOutTime(unsigned short aCheckOutTime)
 }
 
 std::ostream& operator<<(std::ostream& os, const Reservation& r) {
-	os << "----------"<< "\ncustomerId: " << r.getCustomerId() << "\nvehicleId: " << r.getVehicleId() << "\nstartTime: " << r.getStartTime() << "\nendTime: " << r.getEndTime() << "\ncheckInTime: " << r.getCheckInTime() << "\ncheckOutTime: " << r.getCheckOutTime() << "\n----------" << std::endl;
+	os << "----------"<< "\ncustomerId: " << r.getCustomerId() << "\nvehicleId: " << r.getVehicleId() << "\nstartTime: " << r.getStartTime() << "\nendTime: " << r.getEndTime() << "\ncheckInTime: " << r.getCheckInTime() << "\ncheckOutTime: " << r.getCheckOutTime() << "\ntotalCosts: " << r.getTotalCosts() << "\n----------" << std::endl;
 	return os;
 }
 }  // namespace ReservationManager
