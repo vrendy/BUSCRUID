@@ -42,7 +42,7 @@ ReservationDAO& ReservationDAO::getReservationDAO() {
 Reservation ReservationDAO::getReservation(unsigned long customerId, unsigned short vehicleId, unsigned short checkInTime, unsigned short endTime)
 {
 	for (auto it = Database::getDatabase().getReservationTable().begin(); it != Database::getDatabase().getReservationTable().end(); ++it) {
-		if (it->getCustomerId() == customerId && it->getVehicleId() == vehicleId && it->getStartTime() <= checkInTime) {
+		if (it->getCustomerId() == customerId && it->getVehicleId() == vehicleId && checkInTime >= it->getStartTime() && endTime <= it->getEndTime()) {
 			return *it;
 		}
 	}

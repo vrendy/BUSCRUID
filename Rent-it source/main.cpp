@@ -57,15 +57,12 @@ class ReservationDAO;
 
 int main(int argc, char **argv) {
 	initDatabase();
-//	CustomerManager::CustomerDAO cusManager;
+
+	//---------- [Voorbeeld data] ----------//
 	CustomerManager::CustomerDAO::getCustomerDAO().createCustomer(std::string("Chris van Uffelen"), std::string("Ruitenberglaan 69"), std::string("Arnhem"), std::string("Chris.vanUffelen@han.nl"), std::string("NL69FIETS012345678"), CustomerManager::SubscriptionType::paid);
 	std::cout << "Customer with ID: " << Database::getDatabase().getCustomerTable().at(0).getCustomerId() << " and SubscriptionType (0 for free, 1 for paid): " << Database::getDatabase().getCustomerTable().at(0).getSubscription()->getSubscriptionType() << std::endl;
 	std::cout << "Vehicle 1 ID: " << Database::getDatabase().getVehicleTable().at(0).getId() << "\nVehicle 2 ID: " << Database::getDatabase().getVehicleTable().at(1).getId() << std::endl;
 
-	//Maak een reservatie en gebruik de auto binnen deze tijden.
-	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,50,200, ReservationManager::PaymentFrequency::day);
-	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 160, 200);
-	std::cout << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,160);
 
 	switch(RentIt::getRentIt().makeReservation())
 	{
@@ -78,6 +75,17 @@ int main(int argc, char **argv) {
 	}
 
 
+	//---------- [Test Cases] ----------//
+
+	//Maak een reservatie en gebruik de auto binnen deze tijden.
+	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,50,200, ReservationManager::PaymentFrequency::hour);
+	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 165, 95);
+	std::cout << "\nIncheck + uitcheck binnen reservatie:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,165);
+
+	//Maak een reservatie, maar gebruik de auto niet.
+	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,250,300, ReservationManager::PaymentFrequency::day);
+	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 260, 290, 0);
+	std::cout << "\nGeen incheck:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,250,300);
 
 	return 0;
 }
