@@ -29,7 +29,7 @@ unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::subs
 unsigned long CalculateCheckoutOnTime::calculateTotalKmCost(CustomerManager::subscription_ptr sub, unsigned short km, VehicleManager::VehicleType vt)
 {
 	unsigned short pricePerKm = 0;
-	unsigned short kmFree = 0;	//TODO: GET N FREE KM AND SUBSTRACT THEM BEFORE CALCULATING KM * COST
+	unsigned short kmFree = sub->getKmFree();
 	for(pricePerKmRow row : Database::getDatabase().getPricePerKmTable())
 	{
 		if(row.first == sub->getSubscriptionType() && row.second.first == vt)
@@ -37,8 +37,6 @@ unsigned long CalculateCheckoutOnTime::calculateTotalKmCost(CustomerManager::sub
 			pricePerKm = row.second.second;
 		}
 	}
-	//temp
-	kmFree = sub->getKmFree();
 	return (km - kmFree) * pricePerKm;
 }
 // abonnementstype, type auto, geld in eurocent

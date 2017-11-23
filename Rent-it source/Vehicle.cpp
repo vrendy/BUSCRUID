@@ -1,48 +1,25 @@
 #include "Vehicle.h"
 
+#include <iostream>
+
 namespace VehicleManager
 {
 
 static unsigned short vehicleCounter = 0;
 
-//Vehicle::Vehicle() : id(0), type(uninitialized)
-//{
-//
+Vehicle::Vehicle(VehicleType aType, Location aLocation) : id(++vehicleCounter), type(aType), location(aLocation), available(1)
+{
+
+}
+
+bool Vehicle::operator==(unsigned short anId)
+{
+	return id == anId;
+}
+
+//std::ostream& operator<<(std::ostream& os, const Vehicle& v) {
+//	os << (int)v.getType() << "\t" << VehicleTypeToString(v.getType()) << std::endl;
+//	return os;
 //}
 
-Vehicle::Vehicle(VehicleType aType) : id(++vehicleCounter), type(aType), available(1)
-{
-
-}
-
-//Vehicle& Vehicle::operator=(const Vehicle& aVehicle)
-//{
-//	if(this != &aVehicle)
-//	{
-//		id = aVehicle.id;
-//		type = aVehicle.type;
-//		location = aVehicle.location;
-//	}
-//	return *this;
-//}
-
-unsigned short Vehicle::getId()
-{
-	return id;
-}
-
-VehicleType Vehicle::getType()
-{
-	return type;
-}
-
-Location Vehicle::getLocation() {
-	return location;
-}
-
-bool Vehicle::isAvailable()
-{
-	return available;
-}
-
-}  // namespace Design Class
+}  // namespace VehicleManager

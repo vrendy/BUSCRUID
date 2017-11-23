@@ -46,5 +46,22 @@ Vehicle VehicleDAO::getVehicle(unsigned long vehicleId)
 	}
 }
 
+std::string VehicleDAO::VehicleTypeToString(VehicleType t) {
+	switch(t)
+	{
+	case VehicleType::car:
+		return "Car";
+		break;
+	case VehicleType::station:
+		return "Station";
+		break;
+	case VehicleType::uninitialized:
+		return "Uninitialized";
+		break;
+	default:
+		return "No type";
+	}
+}
+
 
 }  // namespace VehicleManager

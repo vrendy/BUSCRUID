@@ -10,6 +10,7 @@
 
 namespace VehicleManager
 {
+
 class VehicleDAO
 {
 public:
@@ -20,6 +21,8 @@ public:
 	bool isAvailable(int vehicleId);
 
 	Vehicle getVehicle(unsigned long vehicleId);
+
+	std::string VehicleTypeToString(VehicleType t);
 
 };
 

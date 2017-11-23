@@ -55,6 +55,26 @@ public:
 		return totalCosts;
 	}
 
+	std::string PaymentFrequencyToString(PaymentFrequency aPaymentFrequency) const	{
+		switch(aPaymentFrequency)
+		{
+		case PaymentFrequency::hour:
+			return "hour";
+			break;
+		case PaymentFrequency::day:
+			return "day";
+			break;
+		case PaymentFrequency::weekend:
+			return "weekend";
+			break;
+		case PaymentFrequency::week:
+			return "week";
+			break;
+		default:
+			return "No paymentFrequency";
+		}
+	}
+
 private:
 	unsigned long				reservationId;
 	unsigned long				customerId;

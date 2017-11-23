@@ -8,26 +8,57 @@ namespace VehicleManager
 
 enum VehicleType
 {
-	uninitialized = 99, car, station
+	car, station, uninitialized = 99
 };
 
 class Vehicle
 {
 public:
-//	Vehicle();
-	Vehicle(VehicleType aType);
-//	Vehicle& operator=(const Vehicle& aVehicle);
+	Vehicle(VehicleType aType, Location aLocation);
+	bool operator==(unsigned short anId);
 
-	unsigned short getId();
-	VehicleType getType();
-	Location getLocation();
-	bool isAvailable();
+	unsigned short getId() const {
+		return id;
+	}
+
+	VehicleType getType() const {
+		return type;
+	}
+
+	Location getLocation() const {
+		return location;
+	}
+
+	bool isAvailable() const {
+		return available;
+	}
+
+//	std::string VehicleTypeToString() const	{
+//		switch(type)
+//		{
+//		case VehicleType::car:
+//			return "Car";
+//			break;
+//		case VehicleType::station:
+//			return "Station";
+//			break;
+//		case VehicleType::uninitialized:
+//			return "Uninitialized";
+//			break;
+//		default:
+//			return "No type";
+//		}
+//	}
 private:
 	unsigned short 		id;
 	VehicleType 		type;
 	Location 			location;
 	bool available;
 };
+
+//std::ostream& operator<<(std::ostream& os, const Vehicle& v);
+
+
 
 }  // namespace VehicleManager
 #endif

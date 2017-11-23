@@ -5,6 +5,7 @@
  *      Author: vrendy
  */
 
+#include "RentIt.h"
 #include "Database.h"
 //#include "CustomerDAO.h"
 //#include "ReservationDAO.h"
@@ -38,9 +39,13 @@ void initDatabase()
 	Database::getDatabase().getPricePerKmTable().push_back(std::make_pair(CustomerManager::SubscriptionType::paid, std::make_pair(VehicleManager::VehicleType::car, 25)));
 	Database::getDatabase().getPricePerKmTable().push_back(std::make_pair(CustomerManager::SubscriptionType::paid, std::make_pair(VehicleManager::VehicleType::station, 30)));
 
+	// Add Locations to Database
+	Database::getDatabase().getLocationTable().push_back(VehicleManager::Location("Arnhem"));
+	Database::getDatabase().getLocationTable().push_back(VehicleManager::Location("Doetinchem"));
+
 	//Add car(s) to Database
-	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::car));
-	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::station));
+	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::car, Database::getDatabase().getLocationTable().at(0)));
+	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::station, Database::getDatabase().getLocationTable().at(0)));
 }
 
 void useCar(unsigned long customerId, unsigned short vehicleId, unsigned short startTimeStamp, unsigned short endTimeStamp, unsigned short nKm) {
@@ -62,8 +67,27 @@ int main(int argc, char **argv) {
 	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 160, 200);
 	std::cout << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,160);
 
+	switch(RentIt::getRentIt().makeReservation())
+	{
+	case -1:
+		std::cout << "No reservation created..." << std::endl;
+		break;
+	case 1:
+		std::cout << "Reservation created!" << std::endl;
+		break;
+	}
+
 
 
 	return 0;
 }
+
+// Deze applicatie moet kunnen:
+// - Reserveer auto
+// - Rij weg met auto
+// - Breng auto terug
+// - Rekening wordt opgemaakt
+// 		- Op tijd wegrijden en terugbrengen
+//		- Als er niet wordt weggereden
+//		- Als er te laat wordt terug gebracht
 
