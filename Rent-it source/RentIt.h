@@ -23,6 +23,7 @@ public:
 
 	std::vector<VehicleManager::Location>& getLocations();
 
+	void addCustomer();
 	void addCustomer(std::string name, std::string address, std::string city, std::string email, std::string bankNbr, CustomerManager::SubscriptionType subType);
 
 	std::vector<VehicleManager::Vehicle> getAvailableVehicles(VehicleManager::Location location, unsigned short startTime, unsigned short endTime);
@@ -32,7 +33,7 @@ public:
 private:
 	unsigned short chooseLocation();
 	signed short chooseCar(unsigned short locationId, unsigned short startTimeStamp, unsigned short endTimeStamp);
-	void chooseSubscriptionType(CustomerManager::Subscription subscriptionType);
+	CustomerManager::SubscriptionType chooseSubscriptionType();
 	void createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, ReservationManager::PaymentFrequency aPaymentFrequency);
 
 

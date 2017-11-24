@@ -28,6 +28,8 @@ public:
 	bool customerHasLatePayments(unsigned long customerId);
 
 	void deleteCustomer(unsigned long customerId);
+
+	std::string SubscriptionTypeToString(SubscriptionType st);
 };
 
 }  // namespace CustomerManager

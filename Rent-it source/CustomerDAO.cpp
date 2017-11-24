@@ -45,5 +45,19 @@ bool CustomerDAO::customerHasLatePayments(unsigned long customerId)
 	return 0;
 }
 
+std::string CustomerDAO::SubscriptionTypeToString(SubscriptionType st) {
+	switch(st)
+	{
+	case SubscriptionType::free:
+		return "Free";
+		break;
+	case SubscriptionType::paid:
+		return "Paid";
+		break;
+	default:
+		return "No type";
+	}
+}
+
 
 }  // namespace Sequence

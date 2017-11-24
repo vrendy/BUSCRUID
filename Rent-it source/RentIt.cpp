@@ -47,11 +47,26 @@ std::vector<VehicleManager::Location>& RentIt::getLocations()
 
 void RentIt::addCustomer(std::string name, std::string address, std::string city, std::string email, std::string bankNbr, CustomerManager::SubscriptionType subType)
 {
-	customerManager.createCustomer(name, address, city, email, bankNbr, subType);
+
+}
+
+void RentIt::addCustomer()
+{
+	std::string name 	= "";
+	std::string address = "";
+	std::string city	= "";
+	std::string email 	= "";
+	std::string bankNbr = "";
+
+	std::cout << "Enter full name:\t"; 	std::cin >> name; 		std::cout << std::endl;
+
+	// Who cares about address, city, email, bankNbr in this application...
+	customerManager.createCustomer(name, address, city, email, bankNbr, chooseSubscriptionType());
 }
 
 std::vector<VehicleManager::Vehicle> RentIt::getAvailableVehicles(VehicleManager::Location location, unsigned short startTime, unsigned short endTime)
 {
+	//TODO UNUSED FUNCTION, do we remove, or delegate things to this function?
 	return vehicleManager.getVehicles(location, startTime, endTime);
 }
 
@@ -61,7 +76,7 @@ std::vector<VehicleManager::Vehicle> RentIt::getAvailableVehicles(VehicleManager
 
 void RentIt::processModuleData(unsigned long customerId, unsigned short vehicleId, unsigned short checkinTime, unsigned short endTime, unsigned short km)
 {
-	// get reservation op basis van customer id, vehicle id, checkintime en checkouttime, roep op said reservation calculateMethod aan
+	reservationManager.processModuleData(customerId, vehicleId, checkinTime, endTime, km);
 }
 
 signed short RentIt::chooseCar(unsigned short locationId, unsigned short startTimeStamp, unsigned short endTimeStamp)
@@ -130,9 +145,35 @@ start:;
 goto start;
 }
 
-void RentIt::chooseSubscriptionType(CustomerManager::Subscription subscriptionType)
+CustomerManager::SubscriptionType RentIt::chooseSubscriptionType()
 {
-	// idem choose car
+	// Init variables
+	signed short subscriptionType = -1;
+	unsigned short maxTypes = 0;
+
+	start:;
+
+	// Show options
+	std::cout << "Choose of the following subscriptions: " << std::endl;
+	for(int i = 0; i < 99; ++i)
+	{
+		if(customerManager.SubscriptionTypeToString(CustomerManager::SubscriptionType(i)) == "No type")
+		{
+			maxTypes = i - 1;
+			break;
+		}
+		std::cout << i << "\t" << customerManager.SubscriptionTypeToString(CustomerManager::SubscriptionType(i)) << std::endl;
+	}
+
+	// Make user choose subscription type
+	std::cin >> subscriptionType;
+	// If invalid subscription type chosen, make the user try again, until he does something valid (YOU CAN'T FUCK WITH THIS APP BRO)
+	if(!((subscriptionType >= 0) && (subscriptionType <= maxTypes)))
+	{
+		std::cout << "Invalid subscription type chosen, try again..." << std::endl;
+		goto start;
+	}
+	return CustomerManager::SubscriptionType(subscriptionType);
 }
 
 void RentIt::createReservation(unsigned long customerId, unsigned short vehicleId, unsigned short startTime, unsigned short endTime, ReservationManager::PaymentFrequency aPaymentFrequency)

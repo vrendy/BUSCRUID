@@ -48,10 +48,6 @@ void initDatabase()
 	Database::getDatabase().getVehicleTable().push_back(VehicleManager::Vehicle(VehicleManager::VehicleType::station, Database::getDatabase().getLocationTable().at(0)));
 }
 
-void useCar(unsigned long customerId, unsigned short vehicleId, unsigned short startTimeStamp, unsigned short endTimeStamp, unsigned short nKm) {
-	ReservationManager::ReservationDAO::getReservationDAO().processModuleData(customerId, vehicleId, startTimeStamp, endTimeStamp, nKm);
-}
-
 class CustomerDAO;
 class ReservationDAO;
 
@@ -64,6 +60,21 @@ int main(int argc, char **argv) {
 	std::cout << "Vehicle 1 ID: " << Database::getDatabase().getVehicleTable().at(0).getId() << "\nVehicle 2 ID: " << Database::getDatabase().getVehicleTable().at(1).getId() << std::endl;
 
 
+	//---------- [Test Cases] ----------//
+
+	//Maak een reservatie en gebruik de auto binnen deze tijden.
+	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,50,200, ReservationManager::PaymentFrequency::hour);
+	RentIt::getRentIt().processModuleData(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 165, 95);
+	std::cout << "\nIncheck + uitcheck binnen reservatie:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,165);
+
+	//Maak een reservatie, maar gebruik de auto niet.
+	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,250,300, ReservationManager::PaymentFrequency::day);
+	RentIt::getRentIt().processModuleData(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 260, 290, 0);
+	std::cout << "\nGeen incheck:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,250,300);
+
+
+	RentIt::getRentIt().addCustomer();
+
 	switch(RentIt::getRentIt().makeReservation())
 	{
 	case -1:
@@ -74,18 +85,6 @@ int main(int argc, char **argv) {
 		break;
 	}
 
-
-	//---------- [Test Cases] ----------//
-
-	//Maak een reservatie en gebruik de auto binnen deze tijden.
-	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,50,200, ReservationManager::PaymentFrequency::hour);
-	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 100, 165, 95);
-	std::cout << "\nIncheck + uitcheck binnen reservatie:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,100,165);
-
-	//Maak een reservatie, maar gebruik de auto niet.
-	ReservationManager::ReservationDAO::getReservationDAO().createReservation(1,1,250,300, ReservationManager::PaymentFrequency::day);
-	useCar(Database::getDatabase().getCustomerTable().at(0).getCustomerId(), Database::getDatabase().getVehicleTable().at(0).getId(), 260, 290, 0);
-	std::cout << "\nGeen incheck:\n" << ReservationManager::ReservationDAO::getReservationDAO().getReservation(1,1,250,300);
 
 	return 0;
 }
