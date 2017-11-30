@@ -10,7 +10,7 @@ class CalculationMethod
 public:
 	CalculationMethod();
 	virtual ~CalculationMethod();
-	virtual unsigned long calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId) = 0;
+	virtual unsigned long calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId, unsigned short extraTime) = 0;
 
 };
 

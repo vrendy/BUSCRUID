@@ -9,7 +9,7 @@ CalculateCheckoutOnTime::CalculateCheckoutOnTime() : CalculationMethod() {}
 
 CalculateCheckoutOnTime::~CalculateCheckoutOnTime() {}
 
-unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId)
+unsigned long CalculateCheckoutOnTime::calculateTotalCosts(CustomerManager::subscription_ptr sub, PaymentFrequency paymentFrequency, unsigned short timeToBePaidFor, unsigned short km, unsigned short vehicleId, unsigned short extraTime)
 {
 
 	// Get vehicle type from database

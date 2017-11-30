@@ -21,7 +21,8 @@ Reservation::Reservation(unsigned long aCustomerId, unsigned short aVehicleId, u
 void Reservation::calculateTotalCosts()
 {
 	// When calling CalculateCheckoutOnTime, pass time which is sum of the time that has to be paid
-	unsigned short timeToBePaidFor = 0;
+	unsigned short timeToBePaidFor 	= 0;
+	unsigned short extraTime 		= 0;
 	if(checkoutOnTime())
 	{
 		std::shared_ptr<CalculateCheckoutOnTime> defaultStrategy = std::make_shared<CalculateCheckoutOnTime>();
@@ -32,11 +33,12 @@ void Reservation::calculateTotalCosts()
 	{
 		std::shared_ptr<CalculateCheckoutLate> lateStrategy = std::make_shared<CalculateCheckoutLate>();
 		method = lateStrategy;
-		timeToBePaidFor = ((endTime - startTime) + (checkOutTime - endTime)); // Duration of reservation + duration of extra time
+		timeToBePaidFor = endTime - startTime; // Duration of reservation
+		extraTime 		= checkOutTime - endTime; // Duration of extra time
 	}
 
 	CustomerManager::subscription_ptr sub = CustomerManager::CustomerDAO::getCustomerDAO().getCustomer(customerId).getSubscription();
-	totalCosts = method->calculateTotalCosts(sub, paymentFrequency, timeToBePaidFor , distance, vehicleId);
+	totalCosts = method->calculateTotalCosts(sub, paymentFrequency, timeToBePaidFor, distance, vehicleId, extraTime);
 
 }
 
